@@ -1,0 +1,32 @@
+#To get P-value 
+i = 1
+while(i!=91):#91 must be replaced with question count value 
+    count = 0
+    student_answered_QNO_1 = list(chem1[chem1.Qno == i]['AnswerStatus'])
+    for ii in student_answered_QNO_1:
+        if ii == 1:
+            count += 1
+    percentge = (int((count/173)*100)) # 173 must be replaced with student count value computed by a fucntoin 
+    if percentge in range(0,31):
+        string = "Hard"
+    elif percentge in range(31,71):
+        string = "Medium"
+    else:
+        string = "Easy"
+    pvalue1.loc[i] = [i] + [string] + [percentge]
+    i += 1
+    
+    #to count the no of student 
+    student_count = 0
+for i in chem1['Qno']:
+    if i == 1:
+        student_count += 1
+print(student_count)
+
+#to count the no of question 
+check = chem1['RollNo'][0]
+count = 0
+for i in chem1['RollNo']:
+    if check == i:
+        count += 1
+print(count)
